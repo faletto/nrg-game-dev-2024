@@ -29,6 +29,7 @@ public class MovePlayer : MonoBehaviour
 
     void Jump()
     {
+        // This is the most complicated part of the entire code, and you may want to skip over this. Essentially, it casts a line straight downward to make sure there's nothing below it.
         RaycastHit2D platformBelow = Physics2D.BoxCast(playerCollider.bounds.center, playerCollider.bounds.size, 0, Vector2.down, 0.1f,ground);
         if (platformBelow.collider != null)
         {
