@@ -36,8 +36,13 @@ public class MoveEnemy : MonoBehaviour
             if (playerCollider.bounds.center.y > enemyCollider.bounds.center.y)
             {
                 Debug.Log("Player on top");
+                Destroy(transform.gameObject);
             }
-            Debug.Log("Enemy on top");
+            else {
+                Debug.Log("Enemy on top");
+                // End the game
+            }
+            
         }
     }
 }
