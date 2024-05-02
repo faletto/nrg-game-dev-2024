@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 public class MoveEnemy : MonoBehaviour
 {
     private int enemySpeed;
+    public bool inverted;
     private Rigidbody2D enemyBody;
     private Collider2D enemyCollider;
     private Collider2D playerCollider;
@@ -12,9 +14,10 @@ public class MoveEnemy : MonoBehaviour
     void Start()
     {
         enemyBody = GetComponent<Rigidbody2D>();
-        enemySpeed = 5;
+        enemySpeed = enemyBody.position.x <= 0 ? 5 : -5;
         enemyCollider = GetComponent<Collider2D>();
         playerCollider = GameObject.Find("Player").GetComponent<Collider2D>();
+
         
     }
 
@@ -23,7 +26,7 @@ public class MoveEnemy : MonoBehaviour
     {
         enemyBody.velocity = new Vector2(enemySpeed, enemyBody.velocity.y);
 
-        if (transform.position.x > 8.25)
+        if (Math.Abs(transform.position.x) > 8.25)
         {
             Destroy(transform.gameObject);
         }
@@ -33,14 +36,13 @@ public class MoveEnemy : MonoBehaviour
     {
         if (collision.collider == playerCollider)
         {
-            if (playerCollider.bounds.center.y > enemyCollider.bounds.center.y)
+            if (playerCollider.bounds.center.y >= enemyCollider.bounds.center.y + 0.5)
             {
-                Debug.Log("Player on top");
                 Destroy(transform.gameObject);
             }
             else {
-                Debug.Log("Enemy on top");
-                // End the game
+                Debug.Log("asdf");
+                GameObject.Find("Player").transform.position = new Vector3(0, 8, 0);
             }
             
         }
