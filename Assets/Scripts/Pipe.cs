@@ -6,6 +6,11 @@ public class Pipe : MonoBehaviour
 {
     private float pipeSpeed;
 
+    /// <summary>
+    /// Initializes pipe prefab parameters.
+    /// </summary>
+    /// <param name="offset"></param> The maximum vertical distance from the pipe and the starting point.
+    /// <param name="speed"></param> The speed at which the pipe moves horizontally.
     public void Initialize(float offset, float speed)
     {
         pipeSpeed = speed;

@@ -19,12 +19,21 @@ public class Bird : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isDead && (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)))
-        {
-            rigidBody.velocity = Vector3.up * flapStrength;
+        if (!isDead) {
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+            {
+                rigidBody.velocity = Vector3.up * flapStrength;
+            }
+            if (Mathf.Abs(transform.position.y) > 6)
+            {
+                Die();
+            }
         }
     }
 
+    /// <summary>
+    /// Triggers death screen.
+    /// </summary>
     public void Die()
     {
         isDead = true;
