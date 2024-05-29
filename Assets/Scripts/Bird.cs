@@ -6,7 +6,7 @@ public class Bird : MonoBehaviour
 {
     private Rigidbody2D rigidBody;
     [SerializeField] private float flapStrength;
-    private bool isDead = false;
+    private bool isGameOver = false;
     [SerializeField] private GameObject deathScreen;
 
     // Start is called before the first frame update
@@ -19,14 +19,14 @@ public class Bird : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isDead) {
+        if (!isGameOver) {
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
             {
                 rigidBody.velocity = Vector3.up * flapStrength;
             }
             if (Mathf.Abs(transform.position.y) > 6)
             {
-                Die();
+                EndGame();
             }
         }
     }
@@ -34,9 +34,9 @@ public class Bird : MonoBehaviour
     /// <summary>
     /// Triggers death screen.
     /// </summary>
-    public void Die()
+    public void EndGame()
     {
-        isDead = true;
+        isGameOver = true;
         deathScreen.SetActive(true);
     }
 
@@ -44,7 +44,7 @@ public class Bird : MonoBehaviour
     {
         if (collision.gameObject.layer == 6) //Pipe layer
         {
-            Die();
+            EndGame();
         }
     }
 }
