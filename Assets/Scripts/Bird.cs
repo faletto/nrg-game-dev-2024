@@ -36,8 +36,7 @@ public class Bird : MonoBehaviour
     /// </summary>
     public void EndGame()
     {
-        isGameOver = true;
-        deathScreen.SetActive(true);
+        Debug.Log("Game Over");
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
