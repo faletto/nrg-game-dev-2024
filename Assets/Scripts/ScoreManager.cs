@@ -9,7 +9,6 @@ public class ScoreManager : MonoBehaviour
     private int score = 0;
     [SerializeField] private GameObject scoreCounter;
     private TMP_Text scoreText;
-    [SerializeField] private GameObject deathScreen;
 
     void Start()
     {
