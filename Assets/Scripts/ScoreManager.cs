@@ -49,4 +49,12 @@ public class ScoreManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    /// <summary>
+    /// Quits the game.
+    /// </summary>
+    public void CloseGame()
+    {
+        Application.Quit();
+    }
 }
